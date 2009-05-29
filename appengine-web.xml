@@ -1,7 +1,10 @@
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
-    <application>YOUR-APPLICATION-ID</application>
-    <version>1</version>
-    <static-files />
+    <application>continue-the-story-dev</application>
+    <version>5</version>
+    <static-files>
+      <include path="/**.css" />
+      <include path="/**.js" />
+    </static-files>
     <resource-files />
     <sessions-enabled>false</sessions-enabled>
     <system-properties>
