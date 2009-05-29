@@ -1,7 +1,6 @@
 $:.unshift File.join(File.dirname(__FILE__),'models')
 require 'rubygems'
 require 'haml'
-require 'appengine-apis/local_boot'
 require 'models'
 require 'sinatra'
  
