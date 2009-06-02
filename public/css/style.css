@@ -1,0 +1,17 @@
+@import url(screen.css);
+
+body{ background: #f5f5f5 }
+
+label{ float: left; clear: left; display: block; }
+
+input{ margin-top: .5em }
+
+input, textarea{ float: left; clear: left; display: block; }
+
+#page{ width: 580px; margin: 2em auto; background: #fff; padding: 1em; border: .3em solid #ddd }
+
+form div{ padding: .5em }
+
+form div:after{ content: '.'; visibility: hidden; clear: both; display: block; height: 0}
+
+.story-item{ padding: .5em 0 }
