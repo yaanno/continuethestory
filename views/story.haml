@@ -1,2 +1,5 @@
 #content
-  = @stories
+  - @story.each do |story|
+    .story-item
+      %h3= story[:title]
+      .story-body= story[:body]

@@ -7,10 +7,11 @@
     /[if IE]
       %link{ :rel => 'stylesheet', :href => '/css/ie.css', :type => 'text/css' }
   %body
-    #header
-      %h2= @title
-      #menu
-        %p
+    #page
+      #header
+        %h2= @title
+        #menu
           %a{ :href => "/"} Home
           %a{ :href => "/stories"} Stories
-    = yield
+          %a{ :href => "/story/add"} Add new Story
+      = yield

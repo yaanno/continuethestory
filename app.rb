@@ -1,34 +1,40 @@
 $:.unshift File.join(File.dirname(__FILE__),'models')
 require 'rubygems'
 require 'haml'
-require 'models'
+require 'appengine-apis/local_boot'
 require 'sinatra'
- 
+
+include AppEngine
+include AppEngine::Datastore::Query::Constants
+
 get '/' do
   @title = "Continue the story"
-  @content = "Hello from Sinatra on Appengine - using Appengine, JRuby, Sinatra framework, Haml, Appengine Apis."
+  @content = "Frontpage"
   haml :index
 end
 
 get '/stories/?' do
-  puts "try"
-  @stories = Story.all
-  puts @stories
+  @title = 'Stories so far'
+  @stories = AppEngine::Datastore::Query.new('Story')
   haml :stories
 end
 
 get '/story/add' do
+  @title = 'Add new Story'
   haml :new
 end
 
 post '/story/add' do
-  @story = Story.create(params[:story])
+  @story = Datastore::Entity.new('Story')
+  @story['title'] = params[:title]
+  @story['slug'] = params[:slug]
+  @story['body'] = Datastore::Text.new( params[:body] )
+  Datastore.put(@story)
   redirect '/stories'
 end
 
-get '/story/:id/?' do
-  @title = "The story"
-  @story = "Let the story begins..."
+get '/story/:slug' do
+  @story = Datastore::Query.new('Story').filter('slug', EQUAL, params[:slug])
   haml :story
 end
 

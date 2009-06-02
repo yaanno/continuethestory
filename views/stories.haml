@@ -1,5 +1,6 @@
 #content
   - @stories.each do |story|
-    .story
-      %h3= story.title
-      %p= story.created_at
+    .story-item
+      %h3
+        %a{:href => '/story/' + story[:slug].to_s }= story[:title]
+      .story-body= story[:body]
